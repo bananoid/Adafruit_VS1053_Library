@@ -1,14 +1,14 @@
-/*************************************************** 
+/***************************************************
   This is a library for the Adafruit VS1053 Codec Breakout
 
-  Designed specifically to work with the Adafruit VS1053 Codec Breakout 
+  Designed specifically to work with the Adafruit VS1053 Codec Breakout
   ----> https://www.adafruit.com/products/1381
 
-  Adafruit invests time and resources providing this open source code, 
-  please support Adafruit and open-source hardware by purchasing 
+  Adafruit invests time and resources providing this open source code,
+  please support Adafruit and open-source hardware by purchasing
   products from Adafruit!
 
-  Written by Limor Fried/Ladyada for Adafruit Industries.  
+  Written by Limor Fried/Ladyada for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
@@ -22,7 +22,7 @@
 
 #include "pins_arduino.h"
 #include "wiring_private.h"
-#include <SPI.h> 
+#include <SPI.h>
 #include <SD.h>
 
 #define VS1053_FILEPLAYER_TIMER0_INT 255 // allows useInterrupt to accept pins 0 to 254
@@ -73,7 +73,7 @@
 
 class Adafruit_VS1053 {
  public:
-  Adafruit_VS1053(uint8_t mosi, uint8_t miso, uint8_t clk, 
+  Adafruit_VS1053(uint8_t mosi, uint8_t miso, uint8_t clk,
 		  uint8_t rst, uint8_t cs, uint8_t dcs, uint8_t dreq);
   Adafruit_VS1053(uint8_t rst, uint8_t cs, uint8_t dcs, uint8_t dreq);
   uint8_t begin(void);
@@ -99,7 +99,7 @@ class Adafruit_VS1053 {
   uint16_t GPIO_digitalRead(void);
   boolean GPIO_digitalRead(uint8_t i);
   void GPIO_pinMode(uint8_t i, uint8_t dir);
- 
+
   boolean prepareRecordOgg(char *plugin);
   void startRecordOgg(boolean mic);
   void stopRecordOgg(void);
@@ -118,7 +118,7 @@ class Adafruit_VS1053 {
 
 class Adafruit_VS1053_FilePlayer : public Adafruit_VS1053 {
  public:
-  Adafruit_VS1053_FilePlayer (uint8_t mosi, uint8_t miso, uint8_t clk, 
+  Adafruit_VS1053_FilePlayer (uint8_t mosi, uint8_t miso, uint8_t clk,
 			      uint8_t rst, uint8_t cs, uint8_t dcs, uint8_t dreq,
 			      uint8_t cardCS);
   Adafruit_VS1053_FilePlayer (uint8_t rst, uint8_t cs, uint8_t dcs, uint8_t dreq,
@@ -126,6 +126,7 @@ class Adafruit_VS1053_FilePlayer : public Adafruit_VS1053 {
 
   boolean begin(void);
   boolean useInterrupt(uint8_t type);
+  boolean useInterrupt(uint8_t type, uint8_t slot);
   File currentTrack;
   boolean playingMusic;
   void feedBuffer(void);
